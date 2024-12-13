@@ -1,0 +1,91 @@
+.landing-page-container {
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    background-color: #1f2937; /* Dark blue background */
+  }
+  
+  .landing-card {
+    background-color: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 60vh;
+    height: 60vh;
+  }
+  
+.landing-page-row {
+    /* justify-content: unset !important; */
+    margin: 0 !important;
+
+}
+
+  .logo-container {
+    margin-bottom: 20px;
+    width: auto;
+  }
+  
+  .landing-logo {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #1f2937; /* Dark blue text */
+    margin: 0;
+  }
+  
+  .button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    width: 70%;
+    height: 80%;
+    justify-content: end;
+  }
+  
+  .primary-button {
+    background-color: #014d40; /* Green button color */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  .primary-button:hover {
+    background-color: #01372d; /* Slightly darker green on hover */
+  }
+  
+  .register-link {
+    color: #e07628; /* Orange color for register link */
+    cursor: pointer;
+    font-size: 0.9rem;
+  }
+  
+  .register-link:hover {
+    text-decoration: underline;
+  }
+
+* {
+    justify-items: center !important;
+}
+
+.landing-page-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+    background: url('../../assets/images/landingPage.jpg') no-repeat center center; /* Replace with your image path */
+    background-size: cover; /* Ensure the image covers the entire container */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+
+  .landing-title{
+    color: white;
+  }

@@ -1,0 +1,40 @@
+.dashboardHeader {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+}
+
+.dashboardNav ul {
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+.dashboardNav li {
+    background-color: #ddd;
+    margin-bottom: 5px;
+}
+
+.dashboardContent {
+    padding: 20px;
+}
+
+.filters {
+    margin-bottom: 20px;
+}
+
+.chart {
+    background-color: #f0f0f0;
+    padding: 20px;
+    margin-top: 10px;
+}
+
+button {
+    background-color: #f0ad4e;
+    border: none;
+    padding: 10px;
+    color: white;
+}
+
+button:hover {
+    background-color: #ec971f;
+}

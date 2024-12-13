@@ -1,0 +1,70 @@
+/* Main container */
+.role-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f5f8fa;
+}
+
+/* Role card styling */
+.role-card {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  text-align: center;
+}
+
+/* Title styling */
+.role-title {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: #333;
+  text-align: center;
+}
+
+/* Buttons container */
+.role-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Individual button styling */
+.role-button {
+  background-color: #b37740;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 15px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: start; /* Align content to the start */
+  text-align: left; /* Align text to the left */
+  gap: 10px; /* Add space between icon and text */
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.role-button:hover {
+  background-color: #9a6535;
+  transform: scale(1.05);
+}
+
+.role-icon {
+  font-size: 24px; /* Icon size */
+  margin-right: 8px; /* Space between icon and text */
+}
+
+/* Role content layout */
+.role-content {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Adjust gap between icon and text */
+}
+
+.role-col {
+  margin-bottom: 15px;
+}

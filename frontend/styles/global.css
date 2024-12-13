@@ -1,0 +1,33 @@
+/* Reset styles for consistent behavior */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    width: 100%;
+  }
+  
+  /* General body styles */
+  body {
+    font-family: 'Arial', sans-serif; /* Use a clean, modern font */
+    color: #1f2937; /* Dark blue text color */
+    background-color: #f5f8fa; /* Light gray background for contrast */
+  }
+  
+  /* Utility Classes */
+  .text-center {
+    text-align: center;
+  }
+  
+  .flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+h2 {
+  font-weight: 100;
+}

@@ -1,0 +1,42 @@
+.dashboard-navbar {
+    background-color: #1f2937; /* Adjust color based on your needs */
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.nav-content {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-section img {
+    height: 50px; /* Adjust based on your logo's dimensions */
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 16px;
+}
+
+.nav-links a:hover {
+    color: #ccc;
+}
+
+.logout-section button {
+    background-color: #f0ad4e;
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    cursor: pointer;
+}
+
+.logout-section button:hover {
+    background-color: #ec971f;
+}
