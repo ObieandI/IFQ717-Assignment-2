@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import {jwtDecode} from "jwt-decode"; // Import jwt-decode to decode the token
 import { Container, Row, Col } from "react-grid-system";
 import "./Login.css";
 import localisLogo from "../../assets/images/localisLogo.png";
@@ -16,28 +17,32 @@ function Login() {
     try {
       const response = await axios.post("/users/login", { username, password });
       const { token } = response.data; // Extract token
-      const role = localStorage.getItem("role"); // Retrieve role from localStorage
-      console.log("Token:", token, "Role:", role);
 
       // Save token to localStorage
       localStorage.setItem("token", token);
 
-      // Navigate based on user role
-      if (role === "admin") {
-        navigate("/admin");
-      } else if (role === "government") {
-        navigate("/government");
-      } else if (role === "hotel") {
-        navigate("/hotel");
-      } else {
-        setError("Unknown user role. Please contact support.");
+      // Decode token to get user role
+      const decoded = jwtDecode(token);
+      console.log("Token:", token, "Role:", decoded.role);
+
+      // Navigate based on user role extracted from the token
+      switch (decoded.role) {
+        case "admin":
+          navigate("/admin");
+          break;
+        case "government":
+          navigate("/government");
+          break;
+        case "hotel":
+          navigate("/hotel");
+          break;
+        default:
+          setError("Unknown user role. Please contact support.");
+          break;
       }
     } catch (err) {
-      if (err.response) {
-        setError(err.response.data.error);
-      } else {
-        setError("An unknown error occurred.");
-      }
+      const errorMessage = err.response ? err.response.data.error : "An unknown error occurred.";
+      setError(errorMessage);
     }
   };
 
@@ -74,10 +79,7 @@ function Login() {
               </form>
               <p className="signup">
                 Don’t have an account?{" "}
-                <span
-                  className="signup-link"
-                  onClick={() => navigate("/role-page")}
-                >
+                <span className="signup-link" onClick={() => navigate("/role-page")}>
                   Sign up
                 </span>
               </p>

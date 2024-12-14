@@ -1,6 +1,6 @@
 const express = require('express');
-const { exportData } = require('../../controllers/government/ExportDataController');
-const { verifyGovernment } = require('../../middlewares/roleMiddleware');
+const { exportData } = require('../../controllers/government/ExportDataController.js');
+const { verifyGovernment } = require('../../middlewares/roleMiddleware.js');
 
 const router = express.Router();
 

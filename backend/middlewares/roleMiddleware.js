@@ -2,6 +2,7 @@ const jwt = require('jsonwebtoken');
 
 // Reusable function to verify roles
 const verifyRole = (role) => (req, res, next) => {
+  console.log(`verifyRole Middleware Invoked for role: ${role}`); // Debug log
   try {
     const authHeader = req.headers.authorization;
     if (!authHeader) {
@@ -12,6 +13,7 @@ const verifyRole = (role) => (req, res, next) => {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
     if (decoded.role !== role) {
+      console.log(`Forbidden: Expected role '${role}', but found '${decoded.role}'`); // Debug log
       return res.status(403).json({ error: `Forbidden: ${role} users only` });
     }
 

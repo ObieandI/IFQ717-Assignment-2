@@ -1,6 +1,6 @@
 const express = require('express');
-const { viewBookingRates } = require('../../controllers/hotel/ViewBookingRatesController');
-const { verifyHotel } = require('../../middlewares/roleMiddleware');
+const { viewBookingRates } = require('../../controllers/hotel/ViewBookingRatesController.js');
+const { verifyHotel } = require('../../middlewares/roleMiddleware.js');
 
 const router = express.Router();
 

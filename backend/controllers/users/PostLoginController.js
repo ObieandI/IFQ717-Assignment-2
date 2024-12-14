@@ -30,7 +30,7 @@ const login = async (req, res) => {
       JWT_SECRET,
       { expiresIn: '1h' }
     );
-
+    console.log("Backend:", "Token:", token, "Role:", user.role);
     // 4. Send the token to the client
     res.json({ token });
   } catch (error) {

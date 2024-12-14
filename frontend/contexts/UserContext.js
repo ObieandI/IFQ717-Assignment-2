@@ -1,31 +1,37 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
-import { jwtDecode } from 'jwt-decode';
+// import React, { createContext, useContext, useState, useEffect } from 'react';
+// import {jwtDecode} from 'jwt-decode';  // Ensure correct import, use 'import' not '{ jwtDecode }'
 
-export const UserContext = createContext();
+// export const UserContext = createContext();
 
-export const UserProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+// export const UserProvider = ({ children }) => {
+//   const [user, setUser] = useState(() => {
+//     const token = localStorage.getItem('token');
+//     if (token) {
+//       try {
+//         return jwtDecode(token); // Automatically decode token on initial load
+//       } catch {
+//         localStorage.removeItem('token'); // Clear token if it's invalid
+//         return null;
+//       }
+//     }
+//     return null;
+//   });
 
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    console.log('Token fetched in UserContext:', token);
-  
-    if (token) {
-      try {
-        const decoded = jwtDecode(token);
-        console.log('Decoded token in UserContext:', decoded);
-      } catch (error) {
-        console.error('Error decoding token:', error);
-      }
-    }
-  }, []);
+//   const loginUser = (newToken) => {
+//     localStorage.setItem('token', newToken); // Save new token to localStorage
+//     setUser(jwtDecode(newToken)); // Decode and set user
+//   };
 
-  return (
-    <UserContext.Provider value={{ user, setUser }}>
-      {children}
-    </UserContext.Provider>
-  );
-};
+//   const logoutUser = () => {
+//     localStorage.removeItem('token'); // Clear the token from localStorage
+//     setUser(null); // Reset user state
+//   };
 
-// Define useUser hook for easy access to the context
-export const useUser = () => useContext(UserContext);
+//   return (
+//     <UserContext.Provider value={{ user, loginUser, logoutUser }}>
+//       {children}
+//     </UserContext.Provider>
+//   );
+// };
+
+// export const useUser = () => useContext(UserContext);

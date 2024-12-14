@@ -1,6 +1,6 @@
 const express = require('express');
-const { viewOccupancyRates } = require('../../controllers/government/ViewOccupancyController');
-const { verifyGovernment } = require('../../middlewares/roleMiddleware');
+const { viewOccupancyRates } = require('../../controllers/government/ViewOccupancyController.js');
+const { verifyGovernment } = require('../../middlewares/roleMiddleware.js');
 
 const router = express.Router();
 
