@@ -1,10 +1,10 @@
-import express from 'express';
-import { viewBookingRates } from '../../controllers/hotel/ViewBookingRatesController.js';
-import { verifyHotel } from '../../middlewares/roleMiddleware.js';
+const express = require('express');
+const { viewBookingRates } = require('../../controllers/hotel/ViewBookingRatesController');
+const { verifyHotel } = require('../../middlewares/roleMiddleware');
 
 const router = express.Router();
 
-// Route to fetch booking rates by region and time frame
+// Route for hotel users to view booking windows and daily rates with filters
 router.get('/booking-rates', verifyHotel, viewBookingRates);
 
-export default router;
+module.exports = router;

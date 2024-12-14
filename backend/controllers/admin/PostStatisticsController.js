@@ -1,7 +1,7 @@
-import db from '../../config/db.js';  // Use import instead of require
+const db = require('../../config/db');
 
 // Controller to add new tourism statistics
-export const addStatistics = async (req, res) => {
+const addStatistics = async (req, res) => {
   const {
     region_name,
     date,
@@ -50,3 +50,4 @@ export const addStatistics = async (req, res) => {
   }
 };
 
+module.exports = { addStatistics };

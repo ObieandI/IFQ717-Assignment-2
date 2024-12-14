@@ -1,11 +1,11 @@
-import db from '../../config/db.js';
-import bcrypt from 'bcryptjs';
-import jwt from 'jsonwebtoken';
+const db = require('../../config/db'); // Knex instance
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 // Load JWT secret from environment variables
 const JWT_SECRET = process.env.JWT_SECRET;
 
-export const login = async (req, res) => {
+const login = async (req, res) => {
   const { username, password } = req.body;
 
   try {
@@ -39,4 +39,4 @@ export const login = async (req, res) => {
   }
 };
 
-
+module.exports = { login };

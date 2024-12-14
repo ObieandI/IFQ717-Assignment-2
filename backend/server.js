@@ -1,25 +1,15 @@
-import dotenv from 'dotenv';
-import knex from 'knex';
-import knexConfig from './config/knexfile.js';
-import express from 'express';
-import cors from 'cors';
+require('dotenv').config();
+const express = require('express');
+const db = require('./config/db');
+const dotenv = require('dotenv');
 
-// Load environment variables from .env file
-dotenv.config({ path: '../.env' });
-console.log('JWT_SECRET:', process.env.JWT_SECRET);
+
+dotenv.config();
 
 const app = express();
 
-// Enable CORS for all origins
-app.use(cors());
-
 // Middleware
 app.use(express.json());
-
-app.use((req, res, next) => {
-  req.setTimeout(10000); // 10 seconds timeout
-  next();
-});
 
 // Base route
 app.get('/', (req, res) => {
@@ -27,7 +17,7 @@ app.get('/', (req, res) => {
 });
 
 //  a test route
-import { verifyAdmin } from './middlewares/roleMiddleware.js';
+const { verifyAdmin } = require('./middlewares/roleMiddleware');
 
 app.get('/test-admin', verifyAdmin, (req, res) => {
   res.status(200).json({ message: 'Admin access granted', user: req.user });
@@ -35,12 +25,12 @@ app.get('/test-admin', verifyAdmin, (req, res) => {
 
 
 // Routes
-import userRegisterRoute from './routes/users/PostRegisterRoute.js';
-import userLoginRoute from './routes/users/PostLoginRoute.js';
-import adminRoutes from './routes/admin/PostStatisticsRoute.js';
-import governmentRoute from './routes/government/ViewOccupancyRoute.js';
-import governmentExportRoute from './routes/government/ExportDataRoute.js';
-import hotelRoute from './routes/hotel/ViewBookingRatesRoute.js';
+const userRegisterRoute = require('./routes/users/PostRegisterRoute');
+const userLoginRoute = require('./routes/users/PostLoginRoute'); // Import login route
+const adminRoutes = require('./routes/admin/PostStatisticsRoute');
+const governmentRoute = require('./routes/government/ViewOccupancyRoute');
+const governmentExportRoute = require('./routes/government/ExportDataRoute');
+const hotelRoute = require('./routes/hotel/ViewBookingRatesRoute');
 
 
 // Use Routes
@@ -51,12 +41,9 @@ app.use('/government', governmentRoute); // Add route to allow goverment to view
 app.use('/government', governmentExportRoute); // Add route to allow government to export filtered data to csv
 app.use('/hotel', hotelRoute); // Add route to allow hotel to view average booking window and daily rate
 
+
 // Start the server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
-
-
-const db = knex(knexConfig.development); // Example for Knex setup
-export default db;

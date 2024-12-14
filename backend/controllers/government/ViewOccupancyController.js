@@ -1,7 +1,7 @@
-import db from '../../config/db.js';
+const db = require('../../config/db');
 
 // Controller to fetch average occupancy and daily rates by region
-export const viewOccupancyRates = async (req, res) => {
+const viewOccupancyRates = async (req, res) => {
   try {
     // SQL query to calculate average occupancy and daily rates
     const results = await db('statistics')
@@ -20,3 +20,5 @@ export const viewOccupancyRates = async (req, res) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 };
+
+module.exports = { viewOccupancyRates };

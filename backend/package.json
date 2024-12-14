@@ -2,7 +2,6 @@
   "name": "tourism-app",
   "version": "1.0.0",
   "main": "index.js",
-  "type": "module",
   "proxy": "http://localhost:5000",
   "presets": [
     "@babel/preset-env",

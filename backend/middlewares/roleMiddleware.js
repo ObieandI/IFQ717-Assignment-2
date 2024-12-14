@@ -1,4 +1,4 @@
-import jwt from 'jsonwebtoken';
+const jwt = require('jsonwebtoken');
 
 // Reusable function to verify roles
 const verifyRole = (role) => (req, res, next) => {
@@ -24,6 +24,8 @@ const verifyRole = (role) => (req, res, next) => {
 };
 
 // Export role-specific middleware
-export const verifyAdmin = verifyRole('admin');
-export const verifyGovernment = verifyRole('government');
-export const verifyHotel = verifyRole('hotel');
+module.exports = {
+  verifyAdmin: verifyRole('admin'),
+  verifyGovernment: verifyRole('government'),
+  verifyHotel: verifyRole('hotel'),
+};

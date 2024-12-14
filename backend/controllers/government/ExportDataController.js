@@ -1,8 +1,8 @@
-import db from '../../config/db.js';
-import { Parser } from 'json2csv';
+const db = require('../../config/db');
+const { Parser } = require('json2csv');
 
 // Controller to export filtered data as CSV
-export const exportData = async (req, res) => {
+const exportData = async (req, res) => {
   const { region_name, start_date, end_date } = req.query;
 
   try {
@@ -55,3 +55,5 @@ export const exportData = async (req, res) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 };
+
+module.exports = { exportData };

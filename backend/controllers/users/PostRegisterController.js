@@ -1,7 +1,7 @@
-import db from '../../config/db.js';
-import bcrypt from 'bcryptjs';
+const db = require('../../config/db'); // Knex instance
+const bcrypt = require('bcryptjs');
 
-export const register = async (req, res) => {
+const register = async (req, res) => {
   const { username, password, role } = req.body;
 
   try {
@@ -33,3 +33,5 @@ export const register = async (req, res) => {
     res.status(500).json({ error: 'Internal server error.' });
   }
 };
+
+module.exports = { register };

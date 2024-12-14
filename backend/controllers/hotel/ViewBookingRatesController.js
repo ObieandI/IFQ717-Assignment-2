@@ -1,6 +1,7 @@
-import db from '../../config/db.js';
+const db = require('../../config/db');
 
-export const viewBookingRates = async (req, res) => {
+// Controller to fetch booking windows and daily rates by region and time frame
+const viewBookingRates = async (req, res) => {
   const { region_name, start_date, end_date } = req.query;
 
   try {
@@ -34,3 +35,5 @@ export const viewBookingRates = async (req, res) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 };
+
+module.exports = { viewBookingRates };

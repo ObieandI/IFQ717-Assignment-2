@@ -1,9 +1,10 @@
-import express from 'express';
-import { exportData } from '../../controllers/government/ExportDataController.js';
-import { verifyGovernment } from '../../middlewares/roleMiddleware.js';
+const express = require('express');
+const { exportData } = require('../../controllers/government/ExportDataController');
+const { verifyGovernment } = require('../../middlewares/roleMiddleware');
 
 const router = express.Router();
 
+// Route for exporting filtered data as CSV
 router.get('/export-data', verifyGovernment, exportData);
 
-export default router;
+module.exports = router;

@@ -1,10 +1,10 @@
-import express from 'express';
-import { verifyAdmin } from '../../middlewares/roleMiddleware.js';
-import { addStatistics } from '../../controllers/admin/PostStatisticsController.js';
+const express = require('express');
+const { addStatistics } = require('../../controllers/admin/PostStatisticsController');
+const { verifyAdmin } = require('../../middlewares/roleMiddleware');
 
 const router = express.Router();
 
 // Admin route for adding statistics
 router.post('/statistics', verifyAdmin, addStatistics);
 
-export default router;
+module.exports = router;
