@@ -17,21 +17,27 @@ const HotelDashboard = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
+                // Get the token from localStorage
                 const token = localStorage.getItem('token');
+                if (!token) {
+                    console.error('No token found. Please log in.');
+                    return;
+                }
+    
+                // Make the API request
                 const response = await axios.get('http://localhost:5000/hotel/booking-rates', {
                     headers: {
-                        'Authorization': `Bearer ${token}`
-                    },
-                    params: {
-                        region_name: 'YourRegion',
-                        start_date: '2023-01-01',
-                        end_date: '2023-01-31',
+                        'Authorization': `Bearer ${token}` // Pass token for verification
                     }
                 });
-
+    
+                // Log the data received
+                console.log('Data received:', response.data);
+    
+                // Process and set chart data
                 const labels = response.data.data.map(item => item.region_name);
                 const data = response.data.data.map(item => item.average_daily_rate);
-
+    
                 setChartData({
                     labels,
                     datasets: [{
@@ -40,13 +46,24 @@ const HotelDashboard = () => {
                         backgroundColor: 'rgba(75,192,192,0.5)'
                     }]
                 });
+    
             } catch (error) {
-                console.error('Error fetching data:', error);
+                // Handle errors
+                if (error.response) {
+                    // Server responded with a status other than 2xx
+                    console.error('Error response:', error.response.status, error.response.data);
+                } else if (error.request) {
+                    // Request was made but no response received
+                    console.error('No response received:', error.request);
+                } else {
+                    // Something else happened
+                    console.error('Error during request:', error.message);
+                }
             }
         };
-
+    
         fetchData();
-    }, []);
+    }, []); // Run only once after the component mounts
 
     useEffect(() => {
         if (chartRef.current && chartData.labels.length > 0) {

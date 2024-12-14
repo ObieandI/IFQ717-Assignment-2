@@ -2,13 +2,13 @@ require('dotenv').config();
 const express = require('express');
 const db = require('./config/db.js');
 const dotenv = require('dotenv');
-
+const cors = require('cors');
+const app = express();
 
 dotenv.config();
 
-const app = express();
-
 // Middleware
+app.use(cors());
 app.use(express.json());
 
 // Base route
@@ -25,12 +25,12 @@ app.get('/test-admin', verifyAdmin, (req, res) => {
 
 
 // Routes
-const userRegisterRoute = require('./routes/users/PostRegisterRoute');
-const userLoginRoute = require('./routes/users/PostLoginRoute'); // Import login route
-const adminRoutes = require('./routes/admin/PostStatisticsRoute');
-const governmentRoute = require('./routes/government/ViewOccupancyRoute');
-const governmentExportRoute = require('./routes/government/ExportDataRoute');
-const hotelRoute = require('./routes/hotel/ViewBookingRatesRoute');
+const userRegisterRoute = require('./routes/users/PostRegisterRoute.js');
+const userLoginRoute = require('./routes/users/PostLoginRoute.js'); // Import login route
+const adminRoutes = require('./routes/admin/PostStatisticsRoute.js');
+const governmentRoute = require('./routes/government/ViewOccupancyRoute.js');
+const governmentExportRoute = require('./routes/government/ExportDataRoute.js');
+const hotelRoute = require('./routes/hotel/ViewBookingRatesRoute.js');
 
 
 // Use Routes
