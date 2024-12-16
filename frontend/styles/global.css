@@ -1,33 +1,40 @@
-/* Reset styles for consistent behavior */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    width: 100%;
-  }
-  
-  /* General body styles */
-  body {
-    font-family: 'Arial', sans-serif; /* Use a clean, modern font */
-    color: #1f2937; /* Dark blue text color */
-    background-color: #f5f8fa; /* Light gray background for contrast */
-  }
-  
-  /* Utility Classes */
-  .text-center {
-    text-align: center;
-  }
-  
-  .flex-center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .hidden {
-    display: none;
-  }
-  
-h2 {
-  font-weight: 100;
+.w-100 {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  color: #1f2937;
+  background-color: #f5f8fa;
+  margin: 0; /* Avoid centering globally */
+}
+
+/* .mt-0 {
+  margin-top: 0 !important;
+}
+
+.m-0 {
+  margin: 0 !important;
+}
+
+.mb-1 {
+  margin-bottom: 1rem !important;
+}
+
+.mt-1 {
+  margin-top: 1rem !important;
+} */
+
+
+.py-0 {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.py-1 {
+  padding-top: 1rem !important;
+  padding-bottom: 1rem !important;
 }

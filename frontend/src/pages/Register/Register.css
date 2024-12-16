@@ -1,38 +1,8 @@
-/* Background */
+/* Body*/
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #173a2c; /* Green */
-    display: flex;
-    justify-content: center;
-    align-items: center;
     height: 100vh;
-}
-
-.register-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-}
-
-.register-card {
-    background-color: white;
-    padding: 2rem;
-    border-radius: 2rem;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    width: 350px;
-    text-align: center;
-    height: 500px !important; /* Slightly taller than login for additional elements */
-}
-
-.registration-card-prompt {
-    font-size: 0.8rem;
-}
-
-.registration-details {
-    margin-top: 2.5rem;
 }
 
 h1 {
@@ -51,6 +21,7 @@ form {
     flex-direction: column;
 }
 
+/* Input fields */
 input {
     margin: 1rem 0 0 !important;
     padding: 0.75rem;
@@ -59,43 +30,7 @@ input {
     font-size: 1rem;
 }
 
-.role-prompt {
-    font-size: 1rem;
-    color: #333;
-    margin-top: 0.5rem;
-}
-
-.register-button {
-    background-color: #c88441; /* Orange */
-    color: white;
-    padding: 0.75rem;
-    border: none;
-    border-radius: 2rem;
-    font-size: 1rem;
-    cursor: pointer;
-    margin: 3rem 0 0;
-}
-
-.register-button:hover {
-    background-color: rgba(200, 132, 65, 0.8);
-}
-
-.login-link {
-    color: #c88441; /* Orange */
-    cursor: pointer;
-    text-decoration: underline;
-}
-
-.login {
-    font-size: small;
-}
-
-.error-message {
-    color: red;
-    font-size: 0.9rem;
-    margin-top: 0.5rem;
-}
-
+/* logo */
 .logo-container {
     display: flex;
     align-items: center;
@@ -108,4 +43,72 @@ input {
 .logo {
     width: 40px;
     height: auto;
+}
+
+.register-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.register-card {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 2rem;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    width: 350px;
+    box-sizing: border-box;
+    text-align: center;
+    height: 500px; 
+}
+
+.registration-card-prompt {
+    font-size: 0.8rem;
+}
+
+/* Button */
+.register-button {
+    background-color: #c88441;
+    color: white;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 2rem;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 2.5rem;
+    width: 100%;
+}
+
+.register-button:hover {
+    background-color: rgba(200, 132, 65, 0.8);
+}
+
+.registration-details {
+    margin-top: 2.5rem;
+}
+
+.error-message {
+    color: red;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+.role-prompt {
+    font-size: 1rem;
+    color: #333;
+    margin-top: 0.5rem;
+}
+
+/* Direct Back To Login Page*/
+ .login-link {
+    color: #c88441; /* Orange */
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.login {
+    font-size: small;
 }

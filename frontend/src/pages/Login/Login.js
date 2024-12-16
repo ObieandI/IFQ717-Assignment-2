@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import {jwtDecode} from "jwt-decode"; // Import jwt-decode to decode the token
-import { Container, Row, Col } from "react-grid-system";
-import "./Login.css";
+import { jwtDecode } from "jwt-decode"; // Import jwt-decode to decode the token
 import localisLogo from "../../assets/images/localisLogo.png";
+import "./Login.css";
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -41,22 +40,24 @@ function Login() {
           break;
       }
     } catch (err) {
-      const errorMessage = err.response ? err.response.data.error : "An unknown error occurred.";
+      const errorMessage = err.response
+        ? err.response.data.error
+        : "An unknown error occurred.";
       setError(errorMessage);
     }
   };
 
   return (
-    <Container fluid className="login-container">
-      <Row justify="center" align="center" className="login-row">
-        <Col xs={12} sm={8} md={6} lg={4}>
+    <div className="container login-container">
+      <div className="row">
+        <div className="col-lg-6 col-md-6">
           <div className="login-card">
             <div className="logo-container">
               <img src={localisLogo} alt="Localis Logo" className="logo" />
               <h1>localis</h1>
             </div>
             <div className="login-details">
-              <h2>Welcome</h2>
+              <h2 className="mt-2">Welcome</h2>
               <p className="login-card-prompt">Log in below to continue.</p>
               <form onSubmit={handleLogin}>
                 <input
@@ -79,16 +80,19 @@ function Login() {
               </form>
               <p className="signup">
                 Don’t have an account?{" "}
-                <span className="signup-link" onClick={() => navigate("/role-page")}>
+                <span
+                  className="signup-link"
+                  onClick={() => navigate("/role-page")}
+                >
                   Sign up
                 </span>
               </p>
               {error && <p className="error-message">{error}</p>}
             </div>
           </div>
-        </Col>
-      </Row>
-    </Container>
+        </div>
+      </div>
+    </div>
   );
 }
 

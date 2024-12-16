@@ -18,6 +18,7 @@
     "cors": "^2.8.5",
     "jwt-decode": "^4.0.0",
     "react": "^18.2.0",
+    "react-bootstrap": "^2.10.7",
     "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.2.0",
     "react-grid-system": "^8.2.1",

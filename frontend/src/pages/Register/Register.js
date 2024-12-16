@@ -46,9 +46,9 @@ function Register() {
   };
 
   return (
-    <Container fluid className="register-container">
-      <Row justify="center" align="center" className="register-row">
-        <Col xs={12} sm={8} md={6} lg={4}>
+    <div className="container register-container">
+      <div className="row">
+        <div className="col-lg-6 col-md-6">
           <div className="register-card">
             <div className="logo-container">
               <img src={localisLogo} alt="Localis Logo" className="logo" />
@@ -58,11 +58,17 @@ function Register() {
               <h2>Welcome</h2>
               <p className="registration-card-prompt">
                 {role === "hotel" ? (
-                  <>Sign up as a <strong>hotel owner</strong>.</>
+                  <>
+                    Sign up as a <strong>hotel owner</strong>.
+                  </>
                 ) : role === "government" ? (
-                  <>Sign up as a <strong>government user</strong>.</>
+                  <>
+                    Sign up as a <strong>government user</strong>.
+                  </>
                 ) : (
-                  <>Sign up as a <strong>{role}</strong>.</>
+                  <>
+                    Sign up as a <strong>{role}</strong>.
+                  </>
                 )}
               </p>
               <form onSubmit={handleRegister}>
@@ -95,9 +101,9 @@ function Register() {
               </p>
             </div>
           </div>
-        </Col>
-      </Row>
-    </Container>
+        </div>
+      </div>
+    </div>
   );
 }
 

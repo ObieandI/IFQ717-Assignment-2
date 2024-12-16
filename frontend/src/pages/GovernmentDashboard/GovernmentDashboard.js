@@ -10,37 +10,41 @@ function GovernmentDashboard() {
     const [error, setError] = useState('');
 
     useEffect(() => {
+
+        const fetchOccupancyRates = async () => {
+            setLoading(true);
+            try {
+                const token = localStorage.getItem('token'); // Retrieve the token
+                if (!token) {
+                    throw new Error('No token found. Please log in again.');
+                }
+
+                const response = await axios.get('http://localhost:5000/government/occupancy-rates', {
+                    headers: {
+                        Authorization: `Bearer ${token}`, // Include token for authentication
+                    },
+                });
+
+                // Process the data into a usable format for charts
+                setOccupancyData(
+                    response.data.data.map((item) => ({
+                        regionName: item.region_name,
+                        occupancy: item.average_historical_occupancy,
+                        dailyRate: item.average_daily_rate,
+                    }))
+                );
+            } catch (error) {
+                console.error('Error fetching occupancy rates:', error);
+                setError(
+                    error.response?.data?.error || 'Failed to fetch data. Please try again.'
+                );
+            } finally {
+                setLoading(false);
+            }
+        };
+
         fetchOccupancyRates();
     }, []);
-
-    const fetchOccupancyRates = async () => {
-        setLoading(true);
-        try {
-            const token = localStorage.getItem('token'); // Retrieve the token
-            if (!token) {
-                throw new Error('No token found. Please log in again.');
-            }
-            console.log("Token sent:", token);
-
-            const response = await axios.get('http://localhost:5000/government/occupancy-rates', {
-                headers: {
-                    Authorization: `Bearer ${token}` // Include token for authentication
-                }
-            });
-
-            // Map data into a usable format
-            setOccupancyData(response.data.data.map(item => ({
-                regionName: item.region_name,
-                occupancy: item.average_historical_occupancy,
-                dailyRate: item.average_daily_rate
-            })));
-        } catch (error) {
-            console.error('Error fetching occupancy rates:', error);
-            setError(error.response?.data?.error || 'Failed to fetch data. Please try again.');
-        } finally {
-            setLoading(false);
-        }
-    };
 
     const handleExport = async () => {
         try {
@@ -88,32 +92,66 @@ function GovernmentDashboard() {
                 {loading ? (
                     <p>Loading data...</p>
                 ) : (
-                    <>
-                        <div className="chart" id="occupancyChart">
-                            <h3>Average Occupancy Rates by Region</h3>
-                            {occupancyData.length > 0 ? (
-                                <Bar
-                                    data={prepareChartData(occupancyData, 'Average Historical Occupancy', 'occupancy')}
-                                    options={{ scales: { y: { beginAtZero: true } } }}
-                                />
-                            ) : (
-                                <p>No data to display</p>
-                            )}
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-lg-6 col-md-6">
+                                <div className="chart-container">
+                                    <h3>Average Occupancy Rates by Region</h3>
+                                    {occupancyData.length > 0 ? (
+                                        <Bar
+                                            data={prepareChartData(
+                                                occupancyData,
+                                                'Average Historical Occupancy',
+                                                'occupancy'
+                                            )}
+                                            options={{
+                                                maintainAspectRatio: false,
+                                                scales: {
+                                                    y: { beginAtZero: true },
+                                                },
+                                            }}
+                                        />
+                                    ) : (
+                                        <p>No data to display</p>
+                                    )}
+                                </div>
+                            </div>
+                            <div className="col-lg-6 col-md-6">
+                                <div className="chart-container">
+                                    <h3>Average Daily Rates by Region</h3>
+                                    {occupancyData.length > 0 ? (
+                                        <Bar
+                                            data={prepareChartData(
+                                                occupancyData,
+                                                'Average Daily Rate',
+                                                'dailyRate'
+                                            )}
+                                            options={{
+                                                maintainAspectRatio: false,
+                                                scales: {
+                                                    y: { beginAtZero: true },
+                                                },
+                                            }}
+                                        />
+                                    ) : (
+                                        <p>No data to display</p>
+                                    )}
+                                </div>
+                            </div>
                         </div>
-                        <div className="chart" id="dailyRateChart">
-                            <h3>Average Daily Rates by Region</h3>
-                            {occupancyData.length > 0 ? (
-                                <Bar
-                                    data={prepareChartData(occupancyData, 'Average Daily Rate', 'dailyRate')}
-                                    options={{ scales: { y: { beginAtZero: true } } }}
-                                />
-                            ) : (
-                                <p>No data to display</p>
-                            )}
+                        <div className="row">
+                            <div className="col-md-12 text-center">
+                                <button
+                                    id="exportBtn"
+                                    onClick={handleExport}
+                                    className="btn btn-warning mt-3"
+                                >
+                                    Export CSV
+                                </button>
+                            </div>
                         </div>
-                    </>
+                    </div>
                 )}
-                <button id="exportBtn" onClick={handleExport} className="btn btn-warning">Export CSV</button>
             </section>
         </div>
     );
