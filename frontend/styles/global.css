@@ -12,6 +12,14 @@ body {
   margin: 0; /* Avoid centering globally */
 }
 
+.d-inline-flex {
+  display: inline-flex !important;
+}
+
+.justify-items-center {
+  justify-items: center !important;
+}
+
 /* .mt-0 {
   margin-top: 0 !important;
 }

@@ -1,8 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { FaUsers, FaHotel } from "react-icons/fa"; // Icons for roles
-import { Container, Row, Col } from "react-grid-system";
 import "./RolePage.css";
+import "../../../styles/global.css"
 
 function RolePage() {
   const navigate = useNavigate();
@@ -14,47 +14,47 @@ function RolePage() {
   };
 
   return (
-    <Container fluid className="role-container">
-      <Row justify="center" align="center" className="role-row">
-        <Col xs={12} sm={8} md={6} lg={4}>
+    <div className="container-fluid role-container">
+      <div className="row">
+        <div className="col-lg-12">
           <div className="role-card">
             <h1 className="role-title">Select Your Role</h1>
-            <Row className="role-buttons">
-              <Col xs={12} className="role-col">
-                <button
+            <div className="row role-buttons d-inline-flex">
+            <div className="col-12 justify-items-center">
+              <button
                   className="role-button"
                   onClick={() => handleRoleSelection("government")}
                 >
-                  <Row align="center">
-                    <Col xs={2} className="role-icon-col">
+                  <div align="center">
+                    <div className="col-2 role-icon-col">
                       <FaUsers className="role-icon" />
-                    </Col>
-                    <Col xs={10} className="role-text-col">
+                    </div>
+                    <div className="col-10 role-text-col">
                       Government User
-                    </Col>
-                  </Row>
+                    </div>
+                  </div>
                 </button>
-              </Col>
-              <Col xs={12} className="role-col">
+              </div>
+            <div className="col-12 d-inline-flex justify-items-center">
                 <button
                   className="role-button"
                   onClick={() => handleRoleSelection("hotel")}
                 >
-                  <Row align="center">
-                    <Col xs={2} className="role-icon-col">
+                  <div align="center">
+                    <div className="col-2 role-icon-col">
                       <FaHotel className="role-icon" />
-                    </Col>
-                    <Col xs={10} className="role-text-col">
+                    </div>
+                    <div className="col-10 role-text-col">
                       Hotel Owner
-                    </Col>
-                  </Row>
+                    </div>
+                  </div>
                 </button>
-              </Col>
-            </Row>
+              </div>
+            </div>
           </div>
-        </Col>
-      </Row>
-    </Container>
+        </div>
+      </div>
+    </div>
   );
 }
 

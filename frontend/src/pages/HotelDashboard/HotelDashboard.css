@@ -1,3 +1,10 @@
+.hotel-dashboard .chart-container {
+    height: 40vh; /* Adjust height as needed */
+    width: 80vw;  /* Adjust width as needed */
+    position: relative;
+    margin: auto; /* Center the chart container */
+}
+
 .hotel-dashboard header {
     background-color: #007BFF;
     color: white;
