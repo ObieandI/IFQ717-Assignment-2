@@ -1,22 +1,47 @@
-.auth-card {
-    background-color: white;
-    padding: 2rem;
-    border-radius: 2rem;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    box-sizing: border-box;
-    width: 350px;
-    margin: 0 auto;
-    height: 500px;
+/* Body */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    height: 100vh;
 }
 
-/* Logo */
+h1 {
+    font-size: 2.5rem;
+    margin: 0.5rem 0;
+    font-weight: bold;
+    color: #000;
+}
+
+h2 {
+    margin-top: 0.5rem !important;
+}
+
+p {
+    margin: 0.5rem 0;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Input fields */
+input {
+    margin: 1rem 0 0 !important;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 2rem;
+    font-size: 1rem;
+}
+
+/* Logo and logo container */
 .logo-container {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    margin-bottom: 1rem;
+    margin: 1rem 0;
+    /* flex-flow: nowrap !important; */
 }
 
 .logo {
@@ -24,11 +49,19 @@
     height: auto;
 }
 
-.auth-card-prompt {
-    font-size: 0.9rem;
-    margin-bottom: 1rem;
+/* Card styling */
+.auth-card {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 2rem;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    width: 350px;
+    box-sizing: border-box;
+    text-align: center;
+    height: 500px;
 }
 
+/* Button styling */
 .auth-button {
     background-color: #c88441;
     color: white;
@@ -41,13 +74,36 @@
     width: 100%;
 }
 
+.auth-container{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
 .auth-button:hover {
     background-color: rgba(200, 132, 65, 0.8);
 }
 
-.footer-link {
-    color: #c88441;
-    cursor: pointer;
-    font-weight: bold;
+.error-message {
+    color: red;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
 }
 
+/* Link styling for navigation between Auth pages */
+.auth-link {
+    color: #c88441; /* Orange */
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.small-font {
+    font-size: small !important;
+}
+
+.card-prompt {
+    font-size: 0.8rem;
+}

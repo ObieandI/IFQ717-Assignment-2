@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode"; // Import jwt-decode to decode the token
 import localisLogo from "../../assets/images/localisLogo.png";
-import "./Login.css";
+import ".././../components/AuthCard/Auth.css";
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -48,47 +48,45 @@ function Login() {
   };
 
   return (
-    <div className="container login-container">
+    <div className="container auth-container">
       <div className="row">
         <div className="col-lg-6 col-md-6">
-          <div className="login-card">
+          <div className="auth-card">
             <div className="logo-container">
               <img src={localisLogo} alt="Localis Logo" className="logo" />
-              <h1>localis</h1>
+              <h1>Localis</h1>
             </div>
-            <div className="login-details">
-              <h2 className="mt-2">Welcome</h2>
-              <p className="login-card-prompt">Log in below to continue.</p>
-              <form onSubmit={handleLogin}>
-                <input
-                  type="email"
-                  placeholder="Email address"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  required
-                />
-                <input
-                  type="password"
-                  placeholder="Password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                />
-                <button type="submit" className="login-button">
-                  Continue
-                </button>
-              </form>
-              <p className="signup">
-                Don’t have an account?{" "}
-                <span
-                  className="signup-link"
-                  onClick={() => navigate("/role-page")}
-                >
-                  Sign up
-                </span>
-              </p>
-              {error && <p className="error-message">{error}</p>}
-            </div>
+            <h2>Welcome</h2>
+            <p className="card-prompt">Log in below to continue.</p>
+            <form onSubmit={handleLogin}>
+              <input
+                type="email"
+                placeholder="Email address"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                required
+              />
+              <input
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+              <button type="submit" className="auth-button">
+                Continue
+              </button>
+            </form>
+            <p className="small-font">
+              Don’t have an account?{" "}
+              <span
+                className="auth-link"
+                onClick={() => navigate("/role-page")}
+              >
+                Sign up
+              </span>
+            </p>
+            {error && <p className="error-message">{error}</p>}
           </div>
         </div>
       </div>
