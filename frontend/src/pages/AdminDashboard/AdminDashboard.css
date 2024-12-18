@@ -1,0 +1,70 @@
+/* General Layout */
+.adminDashboard {
+    background-color: #f8f9fa;
+    padding: 20px;
+    max-width: 600px;
+    margin: 40px auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+
+.adminDashboard h2 {
+    text-align: center;
+    color: #4CAF50;
+    margin-bottom: 20px;
+}
+
+.dashboardContent h3 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.adminForm {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+label {
+    display: flex;
+    flex-direction: column;
+    font-size: 1rem;
+    color: #555;
+}
+
+input {
+    padding: 8px 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+button {
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.error {
+    color: #e74c3c;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.success {
+    color: #2ecc71;
+    text-align: center;
+    font-size: 0.9rem;
+}

@@ -6,161 +6,176 @@ import "./GovernmentDashboard.css";
 
 function GovernmentDashboard() {
     const [occupancyData, setOccupancyData] = useState([]);
-    const [loading, setLoading] = useState(true);  // Start with loading true to fetch initial data
+    const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
+
+    // State for CSV export filters
     const [filters, setFilters] = useState({
-      region: "",
-      startDate: "",
-      endDate: "",
+        region: "",
+        startDate: "",
+        endDate: "",
     });
-  
+
     useEffect(() => {
-      fetchOccupancyRates({});
+        fetchOccupancyRates(); // Fetch data on component mount
     }, []);
-  
-    const applyFilters = () => {
-      fetchOccupancyRates(filters);
-    };
-  
-    const fetchOccupancyRates = async (filters) => {
-      setLoading(true);
-      try {
+
+    const fetchOccupancyRates = async () => {
+        setLoading(true);
+        setError("");
         const token = localStorage.getItem("token");
         if (!token) {
-          setError("Authentication error: No token found. Please log in again.");
-          throw new Error("No token found. Please log in again.");
+            setError("Authentication error: No token found. Please log in again.");
+            setLoading(false);
+            return;
         }
-  
-        const params = {
-          ...(filters.region && { region_name: filters.region }),
-          ...(filters.startDate && { start_date: filters.startDate }),
-          ...(filters.endDate && { end_date: filters.endDate }),
-        };
-  
-        const response = await axios.get(
-          "http://localhost:5000/government/occupancy-rates",
-          {
-            headers: { Authorization: `Bearer ${token}` },
-            params,
-          }
-        );
-  
-        if(response.data.data) {
-          setOccupancyData(
-            response.data.data.map((item) => ({
-              regionName: item.region_name,
-              occupancy: item.average_historical_occupancy,
-              dailyRate: item.average_daily_rate,
-            }))
-          );
-        } else {
-          setError("No data available for the given parameters.");
-          setOccupancyData([]);  // Clear previous data
+
+        try {
+            const response = await axios.get("http://localhost:5000/government/occupancy-rates", {
+                headers: { Authorization: `Bearer ${token}` },
+            });
+
+            if (response.data.data) {
+                setOccupancyData(response.data.data.map(item => ({
+                    regionName: item.region_name,
+                    occupancy: item.average_historical_occupancy,
+                    dailyRate: item.average_daily_rate,
+                })));
+            } else {
+                setError("No data available.");
+                setOccupancyData([]);
+            }
+        } catch (error) {
+            console.error("Error fetching occupancy rates:", error);
+            setError("Failed to fetch data: " + error.message);
+        } finally {
+            setLoading(false);
         }
-      } catch (error) {
-        console.error("Error fetching occupancy rates:", error);
-        setError("Failed to fetch data: " + error.message);
-      } finally {
-        setLoading(false);
-      }
     };
-  
-    const prepareChartData = (data, labelKey, valueKey) => ({
-      labels: data.map((item) => item.regionName),
-      datasets: [
-        {
-          label: labelKey,
-          data: data.map((item) => item[valueKey]),
-          backgroundColor: "rgba(75, 192, 192, 0.2)",
-          borderColor: "rgba(75, 192, 192, 1)",
-          borderWidth: 1,
-        },
-      ],
-    });
-  
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFilters(prev => ({ ...prev, [name]: value }));
+    };
+
+    const exportToCsv = async () => {
+        const token = localStorage.getItem("token");
+        if (!token) {
+            setError("Authentication error: No token found. Please log in again.");
+            return;
+        }
+
+        try {
+            const response = await axios.get("http://localhost:5000/government/export-data", {
+                headers: { Authorization: `Bearer ${token}` },
+                params: {
+                    region_name: filters.region,
+                    start_date: filters.startDate,
+                    end_date: filters.endDate,
+                },
+            });
+
+            const url = window.URL.createObjectURL(new Blob([response.data]));
+            const link = document.createElement('a');
+            link.href = url;
+            link.setAttribute('download', 'export-data.csv');
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        } catch (error) {
+            console.error("Error exporting data:", error);
+            setError("Failed to export data: " + error.message);
+        }
+    };
+
     return (
-      <div className="container-fluid governmentDashboard">
-        <DashboardNavbar />
-        <section className="dashboardContent">
-          <div>
-            <input
-              type="text"
-              placeholder="Region Name"
-              value={filters.region}
-              onChange={(e) => setFilters({ ...filters, region: e.target.value })}
-            />
-            <input
-              type="date"
-              value={filters.startDate}
-              onChange={(e) =>
-                setFilters({ ...filters, startDate: e.target.value })
-              }
-            />
-            <input
-              type="date"
-              value={filters.endDate}
-              onChange={(e) =>
-                setFilters({ ...filters, endDate: e.target.value })
-              }
-            />
-            <button onClick={applyFilters}>Submit</button>
-          </div>
-          {error && <p className="text-danger">{error}</p>}
-          {loading ? (
-            <p>Loading data...</p>
-          ) : (
-            <div className="container">
-              <div className="row">
-                <div className="col-lg-6 col-md-6">
-                  <div className="chart-container">
-                    <h3>Average Occupancy Rates by Region</h3>
-                    {occupancyData.length > 0 ? (
-                      <Bar
-                        data={prepareChartData(
-                          occupancyData,
-                          "Average Historical Occupancy",
-                          "occupancy"
-                        )}
-                        options={{
-                          maintainAspectRatio: false,
-                          scales: {
-                            y: { beginAtZero: true },
-                          },
-                        }}
-                      />
-                    ) : (
-                      <p>No data to display</p>
-                    )}
-                  </div>
+        <div className="container-fluid governmentDashboard">
+            <DashboardNavbar />
+            <section className="dashboardContent">
+                {error && <p className="text-danger">{error}</p>}
+                {loading ? (
+                    <p>Loading data...</p>
+                ) : (
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-lg-6 col-md-6">
+                                <div className="chart-container">
+                                    <h3>Average Occupancy Rates by Region</h3>
+                                    {occupancyData.length > 0 ? (
+                                        <Bar
+                                            data={{
+                                                labels: occupancyData.map(item => item.regionName),
+                                                datasets: [
+                                                    {
+                                                        label: "Average Historical Occupancy",
+                                                        data: occupancyData.map(item => item.occupancy),
+                                                        backgroundColor: "rgba(3, 120, 86, 0.8)",
+                                                        borderColor: "rgba(3, 120, 86, 1)",
+                                                        borderWidth: 1,
+                                                    },
+                                                ],
+                                            }}
+                                            options={{ maintainAspectRatio: false, scales: { y: { beginAtZero: true } } }}
+                                        />
+                                    ) : (
+                                        <p>No data to display</p>
+                                    )}
+                                </div>
+                            </div>
+                            <div className="col-lg-6 col-md-6">
+                                <div className="chart-container">
+                                    <h3>Average Daily Rates by Region</h3>
+                                    {occupancyData.length > 0 ? (
+                                        <Bar
+                                            data={{
+                                                labels: occupancyData.map(item => item.regionName),
+                                                datasets: [
+                                                    {
+                                                        label: "Average Daily Rate",
+                                                        data: occupancyData.map(item => item.dailyRate),
+                                                        backgroundColor: "rgba(200, 132, 65, 0.8)",
+                                                        borderColor: "rgba(178, 96, 47, 1)",
+                                                        borderWidth: 1,
+                                                    },
+                                                ],
+                                            }}
+                                            options={{ maintainAspectRatio: false, scales: { y: { beginAtZero: true } } }}
+                                        />
+                                    ) : (
+                                        <p>No data to display</p>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                )}
+
+                {/* CSV Export Section */}
+                <div>
+                    <input
+                        type="text"
+                        name="region"
+                        placeholder="Region Name for Export"
+                        value={filters.region}
+                        onChange={handleInputChange}
+                    />
+                    <input
+                        type="date"
+                        name="startDate"
+                        value={filters.startDate}
+                        onChange={handleInputChange}
+                    />
+                    <input
+                        type="date"
+                        name="endDate"
+                        value={filters.endDate}
+                        onChange={handleInputChange}
+                    />
+                    <button onClick={exportToCsv}>Export to CSV</button>
                 </div>
-                <div className="col-lg-6 col-md-6">
-                  <div className="chart-container">
-                    <h3>Average Daily Rates by Region</h3>
-                    {occupancyData.length > 0 ? (
-                      <Bar
-                        data={prepareChartData(
-                          occupancyData,
-                          "Average Daily Rate",
-                          "dailyRate"
-                        )}
-                        options={{
-                          maintainAspectRatio: false,
-                          scales: {
-                            y: { beginAtZero: true },
-                          },
-                        }}
-                      />
-                    ) : (
-                      <p>No data to display</p>
-                    )}
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
-        </section>
-      </div>
+            </section>
+        </div>
     );
-  }
-  
-  export default GovernmentDashboard;
+}
+
+export default GovernmentDashboard;

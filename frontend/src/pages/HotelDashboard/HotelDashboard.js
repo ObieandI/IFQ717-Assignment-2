@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { Bar } from 'react-chartjs-2';
 import axios from 'axios';
 import Chart from 'chart.js/auto';
 
@@ -51,8 +50,8 @@ const HotelDashboard = () => {
                     datasets: [{
                         label: 'Average Daily Rate',
                         data: dailyRates,
-                        backgroundColor: 'rgba(75, 192, 192, 0.5)',
-                        borderColor: 'rgba(75, 192, 192, 1)',
+                        backgroundColor: "rgba(3, 120, 86, 0.8)",
+                        borderColor: "rgba(3, 120, 86, 1)",
                         borderWidth: 1
                     }]
                 });
@@ -62,8 +61,8 @@ const HotelDashboard = () => {
                     datasets: [{
                         label: 'Average Booking Window',
                         data: bookingWindows,
-                        backgroundColor: 'rgba(255, 99, 132, 0.5)',
-                        borderColor: 'rgba(255, 99, 132, 1)',
+                        backgroundColor: "rgba(200, 132, 65, 0.8)",
+                        borderColor: "rgba(178, 96, 47, 1)",
                         borderWidth: 1
                     }]
                 });

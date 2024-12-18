@@ -5,6 +5,7 @@ import Register from './pages/Register/Register.js';
 import RolePage from './pages/RolePage/RolePage.js';
 import HotelDashboard from './pages/HotelDashboard/HotelDashboard.js';
 import GovernmentDashboard from './pages/GovernmentDashboard/GovernmentDashboard.js';
+import AdminDashboard from './pages/AdminDashboard/AdminDashboard.js';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         {/* Role-based routes */}
         <Route path="/hotel" element={<HotelDashboard />} />
         <Route path="/government" element={<GovernmentDashboard />} />
+        <Route path="/admin" element={<AdminDashboard />} />
 
         {/* Redirect invalid routes */}
         <Route path="*" element={<Navigate to="/login" replace />} />

@@ -60,7 +60,7 @@ function Login() {
             <p className="card-prompt">Log in below to continue.</p>
             <form onSubmit={handleLogin}>
               <input
-                type="email"
+                type="text"
                 placeholder="Email address"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}

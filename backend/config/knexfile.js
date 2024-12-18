@@ -3,10 +3,11 @@ require('dotenv').config({ path: require('path').resolve(__dirname, '../../.env'
 const path = require('path');
 
 // Define the base path
-const BASE_PATH = path.resolve(__dirname, '../');
+const BASE_PATH = path.resolve(__dirname); // Points to backend/config
 
 console.log('Knexfile loaded');
 console.log('Migrations directory:', path.resolve(BASE_PATH, 'migrations'));
+console.log('Seeds directory:', path.resolve(BASE_PATH, 'seeds'));
 console.log('Database host:', process.env.DB_HOST); // Debug to ensure .env is loaded correctly
 
 const knexConfig = {
