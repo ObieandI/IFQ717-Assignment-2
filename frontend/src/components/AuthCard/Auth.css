@@ -41,7 +41,6 @@ input {
     justify-content: center;
     gap: 0.5rem;
     margin: 1rem 0;
-    /* flex-flow: nowrap !important; */
 }
 
 .logo {
@@ -106,4 +105,8 @@ input {
 
 .card-prompt {
     font-size: 0.8rem;
+}
+
+.justify-items {
+    justify-items: center !important;
 }

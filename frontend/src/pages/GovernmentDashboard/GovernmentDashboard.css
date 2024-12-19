@@ -28,14 +28,14 @@
     margin-top: 10px;
 }
 
-button {
+.govt-button {
     background-color: #f0ad4e;
     border: none;
     padding: 10px;
     color: white;
 }
 
-button:hover {
+.govt-button:hover {
     background-color: #ec971f;
 }
 

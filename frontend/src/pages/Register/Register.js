@@ -45,7 +45,8 @@ function Register() {
   };
 
   return (
-      <div className="row">
+    <div className="container auth-container">
+      <div className="row justify-items">
         <div className="col-lg-6 col-md-6">
           <div className="auth-card">
             <div className="logo-container">

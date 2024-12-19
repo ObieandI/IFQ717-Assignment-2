@@ -40,9 +40,10 @@ input {
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 1rem;
+    width: calc(100% - 20px); /* Adjust input width to ensure it fills label */
 }
 
-button {
+.admin-button {
     padding: 10px 15px;
     background-color: #4CAF50;
     border: none;
@@ -53,18 +54,43 @@ button {
     transition: background-color 0.3s ease;
 }
 
-button:hover {
+.admin-button:hover {
     background-color: #45a049;
 }
 
-.error {
+.error, .success {
     color: #e74c3c;
     text-align: center;
     font-size: 0.9rem;
+    margin-top: 10px; /* Ensure spacing from form elements */
 }
 
 .success {
-    color: #2ecc71;
-    text-align: center;
-    font-size: 0.9rem;
+    color: #2ecc71; /* Maintain distinct colors for success and error messages */
+}
+
+
+.container {
+    width: 100%; /* Takes the full width of the viewport */
+    max-width: 600px; /* Maximum width of the container */
+    margin: 0 auto; /* Centers the container horizontally */
+    padding: 0;
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%; /* Ensures flex-container takes up all available space in its parent */
+    padding: 0;
+    margin: 0;
+}
+
+.row {
+    width: 100%; /* Ensures the row takes up all available space in its parent */
+    margin: 0 auto; /* Centers the row horizontally */
+}
+
+.col-12 {
+    width: 100%; /* Ensures the column takes up all the space of its parent */
+    padding: 0;
 }

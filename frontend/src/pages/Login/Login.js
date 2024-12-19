@@ -4,6 +4,7 @@ import axios from "axios";
 import { jwtDecode } from "jwt-decode"; // Import jwt-decode to decode the token
 import localisLogo from "../../assets/images/localisLogo.png";
 import ".././../components/AuthCard/Auth.css";
+import "../../../styles/global.css"
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -49,7 +50,7 @@ function Login() {
 
   return (
     <div className="container auth-container">
-      <div className="row">
+      <div className="row justify-items">
         <div className="col-lg-6 col-md-6">
           <div className="auth-card">
             <div className="logo-container">

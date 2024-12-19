@@ -171,7 +171,7 @@ function GovernmentDashboard() {
                         value={filters.endDate}
                         onChange={handleInputChange}
                     />
-                    <button onClick={exportToCsv}>Export to CSV</button>
+                    <button className="govt-button" onClick={exportToCsv}>Export to CSV</button>
                 </div>
             </section>
         </div>

@@ -3,16 +3,19 @@
   height: 100vh;
   align-content: space-evenly;
   background-color: #f5f8fa;
+  /* max-width: 600px; */
 }
 
 /* Role card styling */
 .role-card {
-  background-color: white;
+  background-color: #f5f8fa;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
   padding: 30px;
   text-align: center;
   width: 70%;
+  max-height: 400px;
+  height: 400px;
 }
 
 /* Title styling */
@@ -25,14 +28,14 @@
 
 /* Buttons container */
 .role-buttons {
-  flex-direction: column !important;
+  flex-direction: row !important;
   gap: 15px;
-  width: 30%;
+  margin-top: 8rem !important;
 }
 
 /* Individual button styling */
 .role-button {
-  background-color: #b37740;
+  background-color: #B2602F;
   color: white;
   border: none;
   border-radius: 8px;
@@ -45,8 +48,8 @@
 }
 
 .role-button:hover {
-  background-color: #9a6535;
-  transform: scale(1.05);
+  background-color: #9e5429;
+  transform: scale(1.01);
 }
 
 .role-icon {
@@ -65,3 +68,30 @@
   margin-bottom: 15px;
 }
 
+.justify-items {
+  justify-items: center;
+}
+
+.role-logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Align items to the left */
+  gap: 0.5rem;
+  position: absolute; /* Positioning relative to the nearest positioned ancestor (or the body if none is positioned) */
+  top: 20px; /* Adjust as needed for exact positioning */
+  left: 20px; /* Adjust as needed for exact positioning */
+  margin: 0; /* Remove any margin to ensure it's positioned correctly */
+}
+
+/* Adjusts the logo size to make it smaller */
+.role-logo {
+  height: 30px; /* Reducing the height, maintain 'auto' for width to preserve aspect ratio */
+  width: auto;
+}
+
+/* Adjusts the size of the text in the logo container */
+.role-logo-container h1 {
+  font-size: 1.2rem; /* Smaller text size */
+  margin: 0; /* Remove margin to keep it tight */
+  color: #333; /* Ensure text color is visible against the background */
+}
