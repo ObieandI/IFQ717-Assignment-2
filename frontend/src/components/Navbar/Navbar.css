@@ -1,4 +1,4 @@
-.dashboard-navbar {
+.navbar {
     background-color: #1f2937;
     color: white;
     display: inline-flex;
@@ -52,10 +52,6 @@
 }
 
 .logout-section button:hover {
-    background-color: #C88441;
+    background-color: #B2602F;
 }
 
-/* .form-container {
-    width: 100% !important;
-    max-width: none !important;
-} */

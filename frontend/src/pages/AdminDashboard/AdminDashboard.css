@@ -1,37 +1,36 @@
 /* General Layout */
-.adminDashboard {
-    background-color: #f8f9fa;
-    padding: 20px;
-    max-width: 600px;
-    margin: 40px auto;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    font-family: Arial, sans-serif;
+.admin-dashboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
 }
 
-.adminDashboard h2 {
-    text-align: center;
+.admin-content {
+    width: 100%;
+    padding: 20px;
+}
+
+.admin-dashboard h2 {
     color: #4CAF50;
     margin-bottom: 20px;
 }
 
-.dashboardContent h3 {
-    text-align: center;
-    color: #333;
-    margin-bottom: 10px;
-}
-
 .adminForm {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+    background-color: white;
+    padding: 2rem;
+    border-radius: 2rem;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    width: 50%;
+    box-sizing: border-box;
 }
 
 label {
-    display: flex;
+    width: 100%;
     flex-direction: column;
     font-size: 1rem;
     color: #555;
+    padding: 1.5rem 0;
 }
 
 input {
@@ -40,7 +39,8 @@ input {
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 1rem;
-    width: calc(100% - 20px); /* Adjust input width to ensure it fills label */
+    width: calc(100% - 20px);
+    /* Adjust input width to ensure it fills label */
 }
 
 .admin-button {
@@ -58,39 +58,32 @@ input {
     background-color: #45a049;
 }
 
-.error, .success {
+.error,
+.success {
     color: #e74c3c;
     text-align: center;
     font-size: 0.9rem;
-    margin-top: 10px; /* Ensure spacing from form elements */
+    margin-top: 10px;
+    /* Ensure spacing from form elements */
 }
 
 .success {
-    color: #2ecc71; /* Maintain distinct colors for success and error messages */
-}
-
-
-.container {
-    width: 100%; /* Takes the full width of the viewport */
-    margin: 0 auto; /* Centers the container horizontally */
-    padding: 0;
-}
-
-.flex-container {
-    display: flex;
-    flex-direction: row;
-    width: 100%; /* Ensures flex-container takes up all available space in its parent */
-    padding: 0;
-    margin: 0;
+    color: #2ecc71;
+    /* Maintain distinct colors for success and error messages */
 }
 
 .row {
-    width: 100%; /* Ensures the row takes up all available space in its parent */
-    margin: 0 auto; /* Centers the row horizontally */
+    width: 100%;
+    /* Ensures the row takes up all available space in its parent */
+    margin: 0 auto;
+    /* Centers the row horizontally */
     justify-content: center;
 }
 
-.col-12 {
-    width: 100%; /* Ensures the column takes up all the space of its parent */
+.container-fluid {
     padding: 0;
+}
+
+.p {
+    margin: 0%;
 }

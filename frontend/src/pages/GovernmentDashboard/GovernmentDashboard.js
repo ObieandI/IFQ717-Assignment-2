@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Bar } from "react-chartjs-2";
 import DashboardNavbar from "../../components/Navbar/DashboardNavbar.js";
-import Footer from "../../components/Footer/Footer.js";
 import "./GovernmentDashboard.css";
-import "../../../styles/global.css"
+import "../../../styles/global.css";
+import Footer from "../../components/Footer/Footer.js";
 
 function GovernmentDashboard() {
   const [occupancyData, setOccupancyData] = useState([]);
@@ -100,16 +100,14 @@ function GovernmentDashboard() {
 
   return (
     <div className="container-fluid government-dashboard">
-        <DashboardNavbar dashboardType="government" />
-        <section className="government-content">
-        {error && <p className="text-danger">{error}</p>}
-        {loading ? (
-          <p>Loading data...</p>
-        ) : (
+      <Navbar dashboardType="government" />
+      <section className="government-content">
           <div className="container">
             <div className="row">
               <div className="col-12 py-5">
-                <h3 className="py-3 justify-self-center">Average Occupancy Rates by Region</h3>
+                <h3 className="py-3 justify-self-center">
+                  Average Occupancy Rates by Region
+                </h3>
                 <div className="chart-container py-5">
                   {occupancyData.length > 0 ? (
                     <Bar
@@ -136,7 +134,9 @@ function GovernmentDashboard() {
                 </div>
               </div>
               <div className="col-12 pb-5">
-                <h3 className="py-3 justify-self-center">Average Daily Rates by Region</h3>
+                <h3 className="py-3 justify-self-center">
+                  Average Daily Rates by Region
+                </h3>
                 <div className="chart-container py-5">
                   {occupancyData.length > 0 ? (
                     <Bar
@@ -164,35 +164,34 @@ function GovernmentDashboard() {
               </div>
             </div>
           </div>
-        )}
 
         {/* CSV Export Section */}
         <div className="container form-container">
           <div className="row">
-              <div className="col-4 input-col">
-                <input
-                  type="text"
-                  name="region"
-                  placeholder="Region Name for Export"
-                  value={filters.region}
-                  onChange={handleInputChange}
-                />
-              </div>
-              <div className="col-4 input-col">
-                <input
-                  type="date"
-                  name="startDate"
-                  value={filters.startDate}
-                  onChange={handleInputChange}
-                />
-              </div>
-              <div className="col-4 input-col">
-                <input
-                  type="date"
-                  name="endDate"
-                  value={filters.endDate}
-                  onChange={handleInputChange}
-                />
+            <div className="col-4 input-col">
+              <input
+                type="text"
+                name="region"
+                placeholder="Region Name for Export"
+                value={filters.region}
+                onChange={handleInputChange}
+              />
+            </div>
+            <div className="col-4 input-col">
+              <input
+                type="date"
+                name="startDate"
+                value={filters.startDate}
+                onChange={handleInputChange}
+              />
+            </div>
+            <div className="col-4 input-col">
+              <input
+                type="date"
+                name="endDate"
+                value={filters.endDate}
+                onChange={handleInputChange}
+              />
             </div>
           </div>
           <div className="row py-5">
@@ -202,8 +201,7 @@ function GovernmentDashboard() {
           </div>
         </div>
       </section>
-            <Footer />
-      
+      <Footer />
     </div>
   );
 }

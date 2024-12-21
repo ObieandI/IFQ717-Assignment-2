@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Bar } from "react-chartjs-2";
-import DashboardNavbar from "../../components/Navbar/DashboardNavbar.js";
-import Footer from "../../components/Footer/Footer.js";
+import Navbar from "../../components/Navbar/Navbar.js";
+import Footer from "../../components/Footer/Footer.js"
 import "./HotelDashboard.css";
 import "../../../styles/global.css";
 
@@ -64,7 +64,7 @@ const HotelDashboard = () => {
 
   return (
     <div className="container-fluid hotel-dashboard">
-      <DashboardNavbar dashboardType="hotel" />
+      <Navbar dashboardType="hotel" />
       <section className="hotel-content">
         <div className="container">
           <div className="row">
@@ -97,9 +97,7 @@ const HotelDashboard = () => {
               </div>
             </div>
             <div className="col-12 py-5">
-              <h3 className="py-3 justify-self-center">
-                Average Booking Windows
-              </h3>
+              <h3 className="py-3 justify-self-center">Average Booking Windows</h3>
               <div className="chart-container">
                 <Bar
                   key={`bookingWindows-${bookingWindows.length}`} // Ensures component resets on data change
@@ -130,6 +128,7 @@ const HotelDashboard = () => {
         </div>
       </section>
       <Footer />
+
     </div>
   );
 };
