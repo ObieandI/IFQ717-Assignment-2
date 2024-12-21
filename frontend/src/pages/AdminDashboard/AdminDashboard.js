@@ -78,7 +78,7 @@ function AdminDashboard() {
         <div className="container">
           <div className="row">
             <div className="col-12 py-5">
-              <h3 className="pb-3 justify-self-center">
+              <h3 className="pb-4 justify-self-center">
                 Add New Tourism Statistics
               </h3>
               {error && <p className="error">{error}</p>}

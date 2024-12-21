@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Bar } from "react-chartjs-2";
-import DashboardNavbar from "../../components/Navbar/DashboardNavbar.js";
 import "./GovernmentDashboard.css";
 import "../../../styles/global.css";
+import Navbar from "../../components/Navbar/Navbar.js";
 import Footer from "../../components/Footer/Footer.js";
 
 function GovernmentDashboard() {
@@ -11,7 +11,6 @@ function GovernmentDashboard() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  // State for CSV export filters
   const [filters, setFilters] = useState({
     region: "",
     startDate: "",
@@ -19,7 +18,7 @@ function GovernmentDashboard() {
   });
 
   useEffect(() => {
-    fetchOccupancyRates(); // Fetch data on component mount
+    fetchOccupancyRates();
   }, []);
 
   const fetchOccupancyRates = async () => {
@@ -102,68 +101,68 @@ function GovernmentDashboard() {
     <div className="container-fluid government-dashboard">
       <Navbar dashboardType="government" />
       <section className="government-content">
-          <div className="container">
-            <div className="row">
-              <div className="col-12 py-5">
-                <h3 className="py-3 justify-self-center">
-                  Average Occupancy Rates by Region
-                </h3>
-                <div className="chart-container py-5">
-                  {occupancyData.length > 0 ? (
-                    <Bar
-                      data={{
-                        labels: occupancyData.map((item) => item.regionName),
-                        datasets: [
-                          {
-                            label: "Average Historical Occupancy",
-                            data: occupancyData.map((item) => item.occupancy),
-                            backgroundColor: "rgba(3, 120, 86, 0.8)",
-                            borderColor: "rgb(3, 131, 95, 1)",
-                            borderWidth: 1,
-                          },
-                        ],
-                      }}
-                      options={{
-                        maintainAspectRatio: false,
-                        scales: { y: { beginAtZero: true } },
-                      }}
-                    />
-                  ) : (
-                    <p>No data to display</p>
-                  )}
-                </div>
+        <div className="container">
+          <div className="row">
+            <div className="col-12 py-5">
+              <h3 className="py-3 justify-self-center">
+                Average Occupancy Rates by Region
+              </h3>
+              <div className="chart-container py-5">
+                {occupancyData.length > 0 ? (
+                  <Bar
+                    data={{
+                      labels: occupancyData.map((item) => item.regionName),
+                      datasets: [
+                        {
+                          label: "Average Historical Occupancy",
+                          data: occupancyData.map((item) => item.occupancy),
+                          backgroundColor: "rgba(3, 120, 86, 0.8)",
+                          borderColor: "rgb(3, 131, 95, 1)",
+                          borderWidth: 1,
+                        },
+                      ],
+                    }}
+                    options={{
+                      maintainAspectRatio: false,
+                      scales: { y: { beginAtZero: true } },
+                    }}
+                  />
+                ) : (
+                  <p>No data to display</p>
+                )}
               </div>
-              <div className="col-12 pb-5">
-                <h3 className="py-3 justify-self-center">
-                  Average Daily Rates by Region
-                </h3>
-                <div className="chart-container py-5">
-                  {occupancyData.length > 0 ? (
-                    <Bar
-                      data={{
-                        labels: occupancyData.map((item) => item.regionName),
-                        datasets: [
-                          {
-                            label: "Average Daily Rate",
-                            data: occupancyData.map((item) => item.dailyRate),
-                            backgroundColor: "rgba(3, 120, 86, 0.8)",
-                            borderColor: "rgb(3, 131, 95, 1)",
-                            borderWidth: 1,
-                          },
-                        ],
-                      }}
-                      options={{
-                        maintainAspectRatio: false,
-                        scales: { y: { beginAtZero: true } },
-                      }}
-                    />
-                  ) : (
-                    <p>No data to display</p>
-                  )}
-                </div>
+            </div>
+            <div className="col-12 pb-5">
+              <h3 className="py-3 justify-self-center">
+                Daily Rates by Region
+              </h3>
+              <div className="chart-container py-5">
+                {occupancyData.length > 0 ? (
+                  <Bar
+                    data={{
+                      labels: occupancyData.map((item) => item.regionName),
+                      datasets: [
+                        {
+                          label: "Daily Rate",
+                          data: occupancyData.map((item) => item.dailyRate),
+                          backgroundColor: "rgba(3, 120, 86, 0.8)",
+                          borderColor: "rgb(3, 131, 95, 1)",
+                          borderWidth: 1,
+                        },
+                      ],
+                    }}
+                    options={{
+                      maintainAspectRatio: false,
+                      scales: { y: { beginAtZero: true } },
+                    }}
+                  />
+                ) : (
+                  <p>No data to display</p>
+                )}
               </div>
             </div>
           </div>
+        </div>
 
         {/* CSV Export Section */}
         <div className="container form-container">
