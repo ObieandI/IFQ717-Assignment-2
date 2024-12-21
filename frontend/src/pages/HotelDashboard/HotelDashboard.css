@@ -1,34 +1,43 @@
-.hotel-dashboard .chart-container {
-    height: 40vh; /* Adjust height as needed */
-    width: 80vw;  /* Adjust width as needed */
-    position: relative;
-    margin: auto; /* Center the chart container */
-}
-
-.hotel-dashboard header {
-    background-color: #007BFF;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
-}
-
-nav ul {
-    list-style-type: none;
+.hotel-dashboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 0;
 }
 
-nav ul li {
-    display: inline;
-    margin-right: 10px;
-    cursor: pointer;
+.hotel-content {
+    width: 100%;
+    padding: 20px;
 }
 
-main {
-    margin-top: 20px;
+.chart {
+    background-color: #f0f0f0;
+    padding: 20px;
+    margin-top: 10px;
+}
+
+.chart-container {
+    width: 70%; /* Makes the chart fill its column */
+    height: 550px; /* Set fixed height for charts */
+    background-color: #f9f9f9; /* Optional: Add a subtle background */
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    justify-self: center;
+}
+
+.chart-container h3 {
+    text-align: center;
+    margin-bottom: 10px;
 }
 
 .chart {
     border: 1px solid #ccc;
     margin-bottom: 20px;
     padding: 10px;
+}
+
+.filters {
+    margin-bottom: 20px;
 }

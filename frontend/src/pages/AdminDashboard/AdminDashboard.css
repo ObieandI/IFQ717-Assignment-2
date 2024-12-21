@@ -72,7 +72,6 @@ input {
 
 .container {
     width: 100%; /* Takes the full width of the viewport */
-    max-width: 600px; /* Maximum width of the container */
     margin: 0 auto; /* Centers the container horizontally */
     padding: 0;
 }
@@ -88,6 +87,7 @@ input {
 .row {
     width: 100%; /* Ensures the row takes up all available space in its parent */
     margin: 0 auto; /* Centers the row horizontally */
+    justify-content: center;
 }
 
 .col-12 {

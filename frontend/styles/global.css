@@ -1,15 +1,12 @@
-.w-100 {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  width: 100%;
+body {
+  font-family: 'Arial', sans-serif !important;
+  color: #1f2937 !important;
+  background-color: #f5f8fa !important;
+  margin: 0 !important; /* Avoid centering globally */
 }
 
-body {
-  font-family: 'Arial', sans-serif;
-  color: #1f2937;
-  background-color: #f5f8fa;
-  margin: 0; /* Avoid centering globally */
+.d-flex {
+  display: flex;
 }
 
 .d-inline-flex {
@@ -20,12 +17,31 @@ body {
   justify-items: center !important;
 }
 
-.py-0 {
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
+.justify-items-start {
+  justify-items: start;
 }
 
-.py-1 {
-  padding-top: 1rem !important;
-  padding-bottom: 1rem !important;
+.justify-self-center {
+  justify-self: center;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.nav-container {
+  max-width: none !important;
+}
+
+.inline-block {
+  display: inline-block; /* Necessary for transform to work correctly */
+}
+
+.align-content-end {
+  align-content: end !important;
+}
+
+.footer-container {
+  display: contents;
+  text-align: justify;
 }

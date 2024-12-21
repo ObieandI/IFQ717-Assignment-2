@@ -1,42 +1,61 @@
 .dashboard-navbar {
-    background-color: #1f2937; /* Adjust color based on your needs */
+    background-color: #1f2937;
     color: white;
-    display: flex;
-    align-items: center;
+    display: inline-flex;
     justify-content: space-between;
-    padding: 0 20px;
+    align-items: center;
+    width: 100%;
+    height: 3.5rem;
 }
 
 .nav-content {
-    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
+}
+
+.logo-section {
+    flex: 1; /* Allows this section to grow but with a limit */
+    display: flex;
+    justify-content: flex-start; /* Aligns logo to the start */
 }
 
 .logo-section img {
-    height: 50px; /* Adjust based on your logo's dimensions */
+    height: 40px; /* Reduces height a bit if needed */
+    flex: 0 0 auto;
+}
+
+.nav-links {
+    cursor: pointer;
+    width: 50%;
 }
 
 .nav-links a {
     color: white;
     text-decoration: none;
-    margin: 0 15px;
-    font-size: 16px;
+    padding: 10px 15px;
+    display: inline-block; 
 }
 
-.nav-links a:hover {
-    color: #ccc;
+.logout-section {
+    display: flex;
+    justify-content: flex-end;
 }
 
 .logout-section button {
-    background-color: #f0ad4e;
+    background-color: #C88441;
     border: none;
-    padding: 10px 20px;
+    padding: 8px 16px;
     color: white;
-    cursor: pointer;
+    border-radius: 5px;
 }
 
 .logout-section button:hover {
-    background-color: #ec971f;
+    background-color: #C88441;
 }
+
+/* .form-container {
+    width: 100% !important;
+    max-width: none !important;
+} */

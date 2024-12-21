@@ -50,8 +50,8 @@ function Login() {
 
   return (
     <div className="container auth-container">
-      <div className="row justify-items">
-        <div className="col-lg-6 col-md-6">
+      <div className="row">
+        <div className="col-lg-6 col-md-6 justify-items-center">
           <div className="auth-card">
             <div className="logo-container">
               <img src={localisLogo} alt="Localis Logo" className="logo" />
