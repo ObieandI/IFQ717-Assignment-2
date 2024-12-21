@@ -1,3 +1,4 @@
+/* Navbar */
 .navbar {
     background-color: #1f2937;
     color: white;
@@ -16,13 +17,13 @@
 }
 
 .logo-section {
-    flex: 1; /* Allows this section to grow but with a limit */
+    flex: 1;
     display: flex;
-    justify-content: flex-start; /* Aligns logo to the start */
+    justify-content: flex-start;
 }
 
 .logo-section img {
-    height: 40px; /* Reduces height a bit if needed */
+    height: 40px;
     flex: 0 0 auto;
 }
 

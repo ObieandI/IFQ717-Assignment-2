@@ -3,15 +3,13 @@
   height: 100vh;
   align-content: space-evenly;
   background-color: #f5f8fa;
-  /* max-width: 600px; */
 }
 
 /* Role card styling */
 .role-card {
   background-color: #f5f8fa;
   border-radius: 10px;
-  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
-  padding: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
   width: 70%;
   max-height: 400px;
@@ -29,8 +27,7 @@
 /* Buttons container */
 .role-buttons {
   flex-direction: row !important;
-  gap: 15px;
-  margin-top: 8rem !important;
+  gap: 12px;
 }
 
 /* Individual button styling */
@@ -41,10 +38,10 @@
   border-radius: 8px;
   font-size: 1.2rem;
   cursor: pointer;
-  text-align: left; /* Align text to the left */
+  text-align: left;
   transition: background-color 0.3s, transform 0.2s;
   padding: 20px;
-  width: 100%;
+  width: 60%;
 }
 
 .role-button:hover {
@@ -53,15 +50,15 @@
 }
 
 .role-icon {
-  font-size: 24px; /* Icon size */
-  margin-right: 8px; /* Space between icon and text */
+  font-size: 24px;
+  margin-right: 8px;
 }
 
 /* Role content layout */
 .role-content {
   display: flex;
   align-items: center;
-  gap: 10px; /* Adjust gap between icon and text */
+  gap: 10px;
 }
 
 .role-col {
@@ -75,23 +72,23 @@
 .role-logo-container {
   display: flex;
   align-items: center;
-  justify-content: flex-start; /* Align items to the left */
+  justify-content: flex-start;
   gap: 0.5rem;
-  position: absolute; /* Positioning relative to the nearest positioned ancestor (or the body if none is positioned) */
-  top: 20px; /* Adjust as needed for exact positioning */
-  left: 20px; /* Adjust as needed for exact positioning */
-  margin: 0; /* Remove any margin to ensure it's positioned correctly */
+  position: absolute;
+  top: 20px;
+  left: 20px;
+
+  margin: 0;
 }
 
-/* Adjusts the logo size to make it smaller */
 .role-logo {
-  height: 30px; /* Reducing the height, maintain 'auto' for width to preserve aspect ratio */
+  height: 30px;
   width: auto;
 }
 
 /* Adjusts the size of the text in the logo container */
 .role-logo-container h1 {
-  font-size: 1.2rem; /* Smaller text size */
-  margin: 0; /* Remove margin to keep it tight */
-  color: #333; /* Ensure text color is visible against the background */
+  font-size: 1.2rem;
+  margin: 0;
+  color: #333;
 }

@@ -49,11 +49,11 @@ function Register() {
       <div className="row justify-items">
         <div className="col-lg-6 col-md-6 justify-items-center">
           <div className="auth-card">
-            <div className="logo-container">
+            <div className="logo-container py-3">
               <img src={localisLogo} alt="Localis Logo" className="logo" />
               <h1>Localis</h1>
             </div>
-            <h2>Create Your Account</h2>
+            <h3 className="py-2">Register</h3>
             <p className="card-prompt">
               {role === "hotel" ? (
                 <>
@@ -88,7 +88,7 @@ function Register() {
                 Register
               </button>
             </form>
-            <p className="small-font">
+            <p className="small-font py-1">
               Already have an account?{" "}
               <span className="auth-link" onClick={() => navigate("/login")}>
                 Log in

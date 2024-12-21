@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { jwtDecode } from "jwt-decode"; // Import jwt-decode to decode the token
+import { jwtDecode } from "jwt-decode";
 import localisLogo from "../../assets/images/localisLogo.png";
 import ".././../components/AuthCard/Auth.css";
-import "../../../styles/global.css"
+import "../../../styles/global.css";
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -53,11 +53,11 @@ function Login() {
       <div className="row">
         <div className="col-lg-6 col-md-6 justify-items-center">
           <div className="auth-card">
-            <div className="logo-container">
+            <div className="logo-container py-3">
               <img src={localisLogo} alt="Localis Logo" className="logo" />
               <h1>Localis</h1>
             </div>
-            <h2>Welcome</h2>
+            <h3 className="py-2">Welcome</h3>
             <p className="card-prompt">Log in below to continue.</p>
             <form onSubmit={handleLogin}>
               <input
@@ -78,7 +78,7 @@ function Login() {
                 Continue
               </button>
             </form>
-            <p className="small-font">
+            <p className="small-font py-1">
               Don’t have an account?{" "}
               <span
                 className="auth-link"

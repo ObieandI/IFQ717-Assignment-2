@@ -3,14 +3,14 @@ import { useNavigate } from "react-router-dom";
 import localisLogo from "../../assets/images/localisLogo.png"; // Correct path to your logo image
 import "./Navbar.css"; // Ensure the CSS path matches your file structure
 import "../../../styles/global.css";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function Navbar({ dashboardType }) {
   const navigate = useNavigate();
 
   const onLogout = () => {
-    localStorage.removeItem("token");  // Remove the token
-    navigate("/login");  // Redirect to login page
+    localStorage.removeItem("token"); // Remove the token
+    navigate("/login"); // Redirect to login page
   };
 
   return (
@@ -20,7 +20,11 @@ function Navbar({ dashboardType }) {
           <div className="row d-flex align-items-center">
             <div className="col-1 col-md-1">
               <div className="logo-section">
-                <img src={localisLogo} alt="Localis Logo" className="d-none d-md-block"/>
+                <img
+                  src={localisLogo}
+                  alt="Localis Logo"
+                  className="d-none d-md-block"
+                />
               </div>
             </div>
             <div className="col-7 col-md-8">
@@ -39,8 +43,7 @@ function Navbar({ dashboardType }) {
                 )}
                 {dashboardType === "admin" && (
                   <>
-                    <a href="#usermanagement">User Management</a>
-                    <a href="#systemsettings">System Settings</a>
+                    <a href="#tourismsettings">Tourism Settings</a>
                   </>
                 )}
               </div>

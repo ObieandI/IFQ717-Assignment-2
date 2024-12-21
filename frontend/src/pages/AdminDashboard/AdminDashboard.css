@@ -1,4 +1,4 @@
-/* General Layout */
+/* Admin Layout */
 .admin-dashboard {
     display: flex;
     flex-direction: column;
@@ -25,6 +25,43 @@
     box-sizing: border-box;
 }
 
+.admin-button {
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.admin-button:hover {
+    background-color: #409644;
+}
+
+.error,
+.success {
+    color: #e74c3c;
+    text-align: center;
+    font-size: 0.9rem;
+    margin-top: 10px;
+}
+
+.success {
+    color: #2ecc71;
+}
+
+.row {
+    width: 100%;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+.container-fluid {
+    padding: 0;
+}
+
 label {
     width: 100%;
     flex-direction: column;
@@ -40,50 +77,8 @@ input {
     border-radius: 4px;
     font-size: 1rem;
     width: calc(100% - 20px);
-    /* Adjust input width to ensure it fills label */
 }
 
-.admin-button {
-    padding: 10px 15px;
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    font-size: 1rem;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.admin-button:hover {
-    background-color: #45a049;
-}
-
-.error,
-.success {
-    color: #e74c3c;
-    text-align: center;
-    font-size: 0.9rem;
-    margin-top: 10px;
-    /* Ensure spacing from form elements */
-}
-
-.success {
-    color: #2ecc71;
-    /* Maintain distinct colors for success and error messages */
-}
-
-.row {
-    width: 100%;
-    /* Ensures the row takes up all available space in its parent */
-    margin: 0 auto;
-    /* Centers the row horizontally */
-    justify-content: center;
-}
-
-.container-fluid {
-    padding: 0;
-}
-
-.p {
-    margin: 0%;
+p {
+    margin: 0% !important;
 }

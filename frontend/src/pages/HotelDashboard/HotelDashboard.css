@@ -17,9 +17,9 @@
 }
 
 .chart-container {
-    width: 70%; /* Makes the chart fill its column */
-    height: 550px; /* Set fixed height for charts */
-    background-color: #f9f9f9; /* Optional: Add a subtle background */
+    width: 70%;
+    height: 550px;
+    background-color: #f9f9f9;
     padding: 10px;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);

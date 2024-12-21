@@ -2,11 +2,10 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Bar } from "react-chartjs-2";
 import Navbar from "../../components/Navbar/Navbar.js";
-import Footer from "../../components/Footer/Footer.js"
+import Footer from "../../components/Footer/Footer.js";
 import "./HotelDashboard.css";
 import "../../../styles/global.css";
 
-// Import and register components from Chart.js
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -72,7 +71,7 @@ const HotelDashboard = () => {
               <h3 className="py-3 justify-self-center">Average Daily Rates</h3>
               <div className="chart-container">
                 <Bar
-                  key={`dailyRates-${dailyRates.length}`} // Ensures component resets on data change
+                  key={`dailyRates-${dailyRates.length}`}
                   data={{
                     labels: labels,
                     datasets: [
@@ -97,10 +96,12 @@ const HotelDashboard = () => {
               </div>
             </div>
             <div className="col-12 py-5">
-              <h3 className="py-3 justify-self-center">Average Booking Windows</h3>
+              <h3 className="py-3 justify-self-center">
+                Average Booking Windows
+              </h3>
               <div className="chart-container">
                 <Bar
-                  key={`bookingWindows-${bookingWindows.length}`} // Ensures component resets on data change
+                  key={`bookingWindows-${bookingWindows.length}`}
                   data={{
                     labels: labels,
                     datasets: [
@@ -128,7 +129,6 @@ const HotelDashboard = () => {
         </div>
       </section>
       <Footer />
-
     </div>
   );
 };

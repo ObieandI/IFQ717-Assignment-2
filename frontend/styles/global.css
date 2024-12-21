@@ -2,7 +2,7 @@ body {
   font-family: 'Arial', sans-serif !important;
   color: #1f2937 !important;
   background-color: #f5f8fa !important;
-  margin: 0 !important; /* Avoid centering globally */
+  margin: 0 !important;
 }
 
 .d-flex {
@@ -34,7 +34,7 @@ body {
 }
 
 .inline-block {
-  display: inline-block; /* Necessary for transform to work correctly */
+  display: inline-block;
 }
 
 .align-content-end {

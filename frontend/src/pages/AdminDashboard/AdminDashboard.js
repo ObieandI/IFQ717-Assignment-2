@@ -17,6 +17,15 @@ function AdminDashboard() {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
+  // Function to get today's date in YYYY-MM-DD format
+  const getTodayDate = () => {
+    const today = new Date();
+    const day = String(today.getDate()).padStart(2, "0");
+    const month = String(today.getMonth() + 1).padStart(2, "0");
+    const year = today.getFullYear();
+    return `${year}-${month}-${day}`;
+  };
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -27,41 +36,26 @@ function AdminDashboard() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError(""); // Clear previous error
-    setSuccess(""); // Clear previous success message
-  
-    // Validate date
-    if (!isValidDate(formData.date)) {
-      setError("Invalid date. Please enter a valid date.");
-      return;
-    }
-  
-    const token = localStorage.getItem("token"); // Get token from localStorage
+    setError("");
+    setSuccess("");
+
+    const token = localStorage.getItem("token");
     if (!token) {
       setError("Unauthorized. Please log in.");
       return;
     }
-  
+
     try {
-      const data = {
-        region_name: formData.region_name,
-        date: formData.date,
-        average_historical_occupancy: formData.average_historical_occupancy,
-        average_daily_rate: formData.average_daily_rate,
-        average_length_of_stay: formData.average_length_of_stay,
-        average_booking_window: formData.average_booking_window,
-      };
-  
       const response = await axios.post(
         "http://localhost:5000/admin/statistics",
-        data,
+        formData,
         {
           headers: {
-            Authorization: `Bearer ${token}`, // Correctly send the token
+            Authorization: `Bearer ${token}`,
           },
         }
       );
-  
+
       setSuccess("Tourism statistics added successfully!");
       setFormData({
         region_name: "",
@@ -76,12 +70,6 @@ function AdminDashboard() {
       setError("Failed to add statistics. Please try again.");
     }
   };
-  
-  // Helper function to validate date
-  function isValidDate(dateStr) {
-    const date = new Date(dateStr);
-    return date instanceof Date && !isNaN(date);
-  }
 
   return (
     <div className="container-fluid admin-dashboard">
@@ -90,10 +78,15 @@ function AdminDashboard() {
         <div className="container">
           <div className="row">
             <div className="col-12 py-5">
-              <h3 className="pb-3 justify-self-center">Add New Tourism Statistics</h3>
+              <h3 className="pb-3 justify-self-center">
+                Add New Tourism Statistics
+              </h3>
               {error && <p className="error">{error}</p>}
               {success && <p className="success">{success}</p>}
-              <form onSubmit={handleSubmit} className="adminForm justify-self-center">
+              <form
+                onSubmit={handleSubmit}
+                className="adminForm justify-self-center"
+              >
                 <label>
                   <p>Region Name:</p>
                   <input
@@ -112,6 +105,7 @@ function AdminDashboard() {
                     name="date"
                     value={formData.date}
                     onChange={handleInputChange}
+                    min={getTodayDate()}
                     required
                   />
                 </label>
@@ -163,7 +157,7 @@ function AdminDashboard() {
                     required
                   />
                 </label>
-                <button className="admin-button" type="submit">
+                <button className="admin-button py-2" type="submit">
                   <p>Add Statistics</p>
                 </button>
               </form>
